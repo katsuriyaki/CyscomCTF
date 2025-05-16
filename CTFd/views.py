@@ -207,7 +207,7 @@ def setup():
             # Splice in our banner
             index = f"""<div class="row">
                             <div class="col-md-6 offset-md-3 text-center">
-                                <img class="w-100 mx-auto d-block" style="max-width: 350px;padding: 50px;padding-top: 14vh;" src="/files/4359f17ce1e5f84244bed59f72ee8bf2/cyscom.png" alt="CTF Platform Logo" />
+                                <img class="w-100 mx-auto d-block" style="max-width: 350px;padding: 50px;padding-top: 14vh;" src={default_ctf_banner_location} />
                                 <h3 class="text-center" style="font-weight: 600;">Welcome to the {{ ctf_name }}</h3>
                                 <p class="text-center" style="margin-bottom: 30px;">Join the challenge and start solving now!</p>
                                 <div class="d-flex justify-content-center">
