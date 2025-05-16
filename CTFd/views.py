@@ -206,21 +206,16 @@ def setup():
 
             # Splice in our banner
             index = f"""<div class="row">
-    <div class="col-md-6 offset-md-3">
-        <img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="{default_ctf_banner_location}" />
-        <h3 class="text-center">
-            <p>A cool CTF platform from <a href="https://ctfd.io">ctfd.io</a></p>
-            <p>Follow us on social media:</p>
-            <a href="https://twitter.com/ctfdio"><i class="fab fa-twitter fa-2x" aria-hidden="true"></i></a>&nbsp;
-            <a href="https://facebook.com/ctfdio"><i class="fab fa-facebook fa-2x" aria-hidden="true"></i></a>&nbsp;
-            <a href="https://github.com/ctfd"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
-        </h3>
-        <br>
-        <h4 class="text-center">
-            <a href="admin">Click here</a> to login and setup your CTF
-        </h4>
-    </div>
-</div>"""
+                            <div class="col-md-6 offset-md-3 text-center">
+                                <img class="w-100 mx-auto d-block" style="max-width: 350px;padding: 50px;padding-top: 14vh;" src="/files/4359f17ce1e5f84244bed59f72ee8bf2/cyscom.png" alt="CTF Platform Logo" />
+                                <h3 class="text-center" style="font-weight: 600;">Welcome to the {{ ctf_name }}</h3>
+                                <p class="text-center" style="margin-bottom: 30px;">Join the challenge and start solving now!</p>
+                                <div class="d-flex justify-content-center">
+                                    <a href="/login" class="btn btn-lg btn btn-outline-info text-center px-4 py-2" style="border-radius: 30px; transition: 0.3s;">
+                                        🎯 Join the CTF
+                                    </a>
+                                </div>
+                        </div>"""
             page.content = index
 
             # Visibility

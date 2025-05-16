@@ -38,9 +38,9 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #243665;">
 		<div class="container">
-			<a href="{{ url_for('views.static_html', route='/') }}" class="navbar-brand">CTFd</a>
+			<a href="{{ url_for('views.static_html', route='/') }}" class="navbar-brand">CyscomCTF</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#base-navbars"
 					aria-controls="base-navbars" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -106,13 +106,6 @@
 						{% endif %}
 					{% endif %}
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li class="nav-item">
-						<a class="nav-link" href="https://docs.ctfd.io/" target="_blank">
-							<i class="far fa-question-circle"></i>
-						</a>
-					</li>
-				</ul>
 			</div>
 		</div>
 	</nav>
@@ -137,11 +130,10 @@
 		<div class="container text-center">
 			<a href="https://ctfd.io" class="text-secondary">
 				<small class="text-muted">
-					Powered by CTFd
 				</small>
 			</a>
 			<span>
-				<small class="text-muted"><br> Version {{ get_config('ctf_version') }}</small>
+				<small class="text-muted"><br></small>
 			</span>
 		</div>
 	</footer>
