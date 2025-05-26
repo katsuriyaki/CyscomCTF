@@ -58,6 +58,19 @@ services:
     networks:
         internal:
 
+  soalctf:
+    image: php:8.1-apache
+    container_name: SoalCTF
+    restart: always
+    volumes:
+      - ./SoalCTF:/var/www/html
+    ports:
+      - "8080:80"
+    networks:
+      default:
+      internal:
+
+
 networks:
     default:
     internal:
