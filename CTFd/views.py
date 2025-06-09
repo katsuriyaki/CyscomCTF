@@ -205,16 +205,61 @@ def setup():
                 set_config("ctf_banner", f.location)
 
             # Splice in our banner
-            index = f"""<div class="row">
-                            <div class="col-md-6 offset-md-3 text-center">
-                                <img class="w-100 mx-auto d-block" style="max-width: 350px;padding: 50px;padding-top: 14vh;" src={default_ctf_banner_location} />
-                                <h3 class="text-center" style="font-weight: 600;">Welcome to the {{ ctf_name }}</h3>
-                                <p class="text-center" style="margin-bottom: 30px;">Join the challenge and start solving now!</p>
-                                <div class="d-flex justify-content-center">
-                                    <a href="/login" class="btn btn-lg btn btn-outline-info text-center px-4 py-2" style="border-radius: 30px; transition: 0.3s;">
-                                        🎯 Join the CTF
-                                    </a>
-                                </div>
+            index = f"""<div style="
+                        position: relative;
+                        height: 79.2vh;
+                        width: 90vw;
+                        max-width: 1200px;
+                        margin: auto;
+                        padding: 1.45rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 4rem;
+                        font-family: 'Segoe UI', sans-serif;
+                        flex-wrap: wrap;
+                        ">
+
+                        <div style="
+                            z-index: 2;
+                            flex: 1 1 400px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            gap: 1.2rem;
+                            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+                        ">
+                            <h3 style="margin: 0; font-size: 3.5rem; font-weight: 800;">
+                            THINK OUTSIDE<br>THE BOX
+                            </h3>
+
+                            <p style="margin: 0; font-size: 1.2rem; font-weight: 400;">
+                            Semangat Solve Soalnya yaa ✨
+                            </p>
+
+                            <div class="d-flex justify-content-start">
+                            <a href="/login" class="btn btn-light fw-bold text-uppercase px-4 py-3 shadow rounded-pill custom-hover w-auto">
+                                Get Started
+                            </a>
+                            </div>
+                        </div>
+
+                        <div style="
+                            flex: 0 0 auto;
+                            max-width: 350px;
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        ">
+                            <img src="/files/6c4675ebcada66f222f0ca76424e26ec/hackerabis.png" alt="CTF Banner" style="
+                            width: 100%;
+                            height: auto;
+                            object-fit: contain;
+                            border-radius: 20px;
+                            ">
+                        </div>
+
                         </div>"""
             page.content = index
 
