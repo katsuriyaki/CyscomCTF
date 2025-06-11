@@ -110,7 +110,7 @@
             document.getElementById('commentInput').value = '';
         }
 
-        const encodedFlag = [67, 89, 83, 67, 79, 77, 123, 101, 122, 101, 116, 107, 97, 110, 98, 114, 111, 107, 119, 107, 119, 107, 125];
+        const encodedFlag = [67, 89, 67, 123, 110, 101, 103, 109, 114, 105, 115, 101, 112, 117, 104, 125];
         window.__getFlag = () => String.fromCharCode(...encodedFlag);
         
         const hint = document.createElement('div');
@@ -124,3 +124,4 @@
     </script>
 </body>
 </html>
+

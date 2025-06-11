@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ip = hex2bin($_POST['ip'] ?? '');
     
     if (preg_match('/;.*cat.*flag.txt/', $ip)) {
-        $popupMessage = "CYSCOM{ph3lixxxjanganlupamewing}";
+        $popupMessage = "CYC{ph3lixxxjanganlupamewing}";
         $showPopup = true;
         $isSuccess = true;
     } else {

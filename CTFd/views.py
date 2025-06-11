@@ -252,7 +252,7 @@ def setup():
                             justify-content: center;
                             align-items: center;
                         ">
-                            <img src="/files/6c4675ebcada66f222f0ca76424e26ec/hackerabis.png" alt="CTF Banner" style="
+                            <img src="{default_ctf_banner_location}" alt="CTF Banner" style="
                             width: 100%;
                             height: auto;
                             object-fit: contain;
