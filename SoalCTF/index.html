@@ -24,6 +24,7 @@
     background: black;
   }
 
+  /* Background GIF hacker */
   body::before {
     content: "";
     position: fixed;
@@ -33,6 +34,7 @@
     z-index: 0;
   }
 
+  /* Canvas matrix overlay */
   #matrix {
     position: fixed;
     top: 0; left: 0;
@@ -147,6 +149,55 @@
     background-color: var(--button-hover-bg);
   }
 
+  .flag-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    background-color: #000;
+    color: var(--accent);
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .submit-btn {
+    background-color: var(--button-bg);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+
+  .submit-btn:hover {
+    background-color: var(--button-hover-bg);
+  }
+
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 10px var(--accent);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .success {
+    background-color: var(--success-color);
+  }
+
+  .error {
+    background-color: var(--error-color);
+  }
+
   .solved {
     border-left: 5px solid var(--success-color);
   }
@@ -154,6 +205,8 @@
 </head>
 <body>
 <canvas id="matrix"></canvas>
+
+<div id="notification" class="notification" style="display: none;"></div>
 
 <header>
   <div class="container">
@@ -167,12 +220,12 @@
     <!-- SQL Injection Challenge -->
     <div class="challenge-card" id="sql-challenge">
       <div class="challenge-header">
-        <span>SQL Injection</span>
-        <span class="difficulty">Esay</span>
+        <span>SQL Ghost: Membuka Kunci Basis Data Rahasia CYSCOM</span>
+        <span class="difficulty">Easy</span>
       </div>
       <div class="challenge-body">
         <div class="challenge-description">
-          <p>Lewati login admin dengan memanfaatkan kerentanan injeksi SQL.</p>
+          <p>Lewati login admin dengan memanfaatkan kerentanan SQL.</p>
           <p><strong>Target URL:</strong> http://ctf.ph3lixxx/admin-login.php</p>
         </div>
 
@@ -183,6 +236,9 @@
           <div class="code-block">
             Massukan username admin dan password yang terencode
           </div>
+
+          <input type="text" class="flag-input" placeholder="Enter your flag here" />
+          <button class="submit-btn" onclick="validateFlag('sql', this)">Submit Flag</button>
         </div>
       </div>
     </div>
@@ -190,12 +246,12 @@
     <!-- XSS Challenge -->
     <div class="challenge-card" id="xss-challenge">
       <div class="challenge-header">
-        <span>Cross-Site Scripting (XSS)</span>
+        <span>Cross-Site Deception: The JavaScript Takeover</span>
         <span class="difficulty">Hard</span>
       </div>
       <div class="challenge-body">
         <div class="challenge-description">
-          <p>Eksekusi JavaScript saat kursor diarahkan ke elemen tersebut. dengan memanfaatkan kerentanan XSS di bagian komentar.</p>
+          <p>Eksekusi JavaScript dengan memanfaatkan kerentanan XSS di bagian komentar.</p>
           <p><strong>Target URL:</strong> http://ctf.ph3lixxx.com/comment.php</p>
         </div>
 
@@ -204,8 +260,11 @@
         <div id="xss-solution" class="solution" style="display:none;">
           <p><strong>Solution:</strong></p>
           <div class="code-block">
-            Payload untuk menyelsaikan tantangan ini berkaitan dengan mouseover javascript dan alert akan menampilkan flag!
+            Payload untuk menyelsaikan tantangan ini berkaitan dengan mouseover javascript dan alert akan menampilkan flag!, bisakah anda melihat sourscode terlebih dahulu?
           </div>
+
+          <input type="text" class="flag-input" placeholder="Enter flag" />
+          <<button class="submit-btn" onclick="validateFlag('xss', this)">Submit Flag </button>
         </div>
       </div>
     </div>
@@ -213,8 +272,8 @@
 <!-- LFI Challenge -->
 <div class="challenge-card" id="lfi-challenge">
   <div class="challenge-header">
-    <span>Local File Inclusion (LFI)</span>
-    <span class="difficulty">Esay</span>
+    <span>File Include Fury: Unlock Server Secrets, Find The IP!</span>
+    <span class="difficulty">Easy</span>
   </div>
   <div class="challenge-body">
     <div class="challenge-description">
@@ -227,8 +286,10 @@
     <div id="lfi-solution" class="solution" style="display:none;">
       <p><strong>Solution:</strong></p>
       <div class="code-block">
-        Coba akses file seperti <code>../../../../page.php?flag=flag</code> atau cari file leak flag dalam direktori server.
+        Coba akses file seperti <code>../page.php?flag=flag</code> atau cari file leak flag dalam direktori server.
       </div>
+      <input type="text" class="flag-input" placeholder="Enter your flag here" />
+      <button class="submit-btn" onclick="validateFlag('lfi', this)">Submit Flag</button>
     </div>
   </div>
 </div>
@@ -236,12 +297,12 @@
 <!-- CSRF Challenge -->
 <div class="challenge-card" id="csrf-challenge">
   <div class="challenge-header">
-    <span>Cross-Site Request Forgery (CSRF)</span>
+    <span>CSRF Trickery: Forging Requests, Stealing CYSCOM's IP</span>
     <span class="difficulty">Medium</span>
   </div>
   <div class="challenge-body">
     <div class="challenge-description">
-      <p>Buat HTML untuk mengganti passwd admin secara diam diam.</p>
+      <p>Kita buat apaya untuk mengganti passwd admin secara diam diam.</p>
       <p><strong>Target URL:</strong> http://ctf.ph3lixxx.com/uploads.php</p>
     </div>
 
@@ -252,6 +313,8 @@
       <div class="code-block">
         Gantilah password admin menjadi "priadingjn" secara diam-diam.
       </div>
+      <input type="text" class="flag-input" placeholder="Enter your flag here" />
+      <button class="submit-btn" onclick="validateFlag('csrf', this)">Submit Flag</button>
     </div>
   </div>
 </div>
@@ -274,6 +337,8 @@
       <div class="code-block">
         Kalian bebas mengguanakan apapun itu untuk menemukan alamat ip "srv.pnc.ac.id"
       </div>
+      <input type="text" class="flag-input" placeholder="Enter IP address here" />
+      <button class="submit-btn" onclick="validateFlag('secret', this)">Submit Flag</button>
     </div>
   </div>
 </div>
@@ -281,12 +346,12 @@
     <!-- Command Injection Challenge -->
     <div class="challenge-card" id="ci-challenge">
       <div class="challenge-header">
-        <span>Command Injection</span>
+        <span>Terminal Domination: Injecting Your Will onto the Server</span>
         <span class="difficulty">Medium</span>
       </div>
       <div class="challenge-body">
         <div class="challenge-description">
-          <p>Manfaatkan utilitas ping untuk membaca bendera. Server mengharapkan masukan dalam format hex.</p>
+          <p>Manfaatkan utilitas ping untuk membaca flag.</p>
           <p><strong>Target URL:</strong> http://ctf.ph3lixxx/ping.php</p>
         </div>
 
@@ -295,8 +360,11 @@
         <div id="ci-solution" class="solution" style="display:none;">
           <p><strong>Solution:</strong></p>
           <div class="code-block">
-            Ada sebuah file bernama flag.txt namun file tersebut tidak dapat di lihat maupun di buka, tugas anda adalah mengubah command untuk melihat isi file menjadi format hex
+            Ada sebuah file bernama flag.txt namun file tersebut tidak dapat di lihat maupun di buka, tugas anda adalah mengubah command untuk melihat isi file.
           </div>
+
+          <input type="text" class="flag-input" placeholder="Enter flag" />
+          <button class="submit-btn" onclick="validateFlag('ci', this)">Submit Flag</button>
         </div>
       </div>
     </div>
@@ -310,6 +378,26 @@
 </footer>
 
 <script>
+  // Correct flags for each challenge
+  const correctFlags = {
+    "sql": "CYC{priadingjntimdakpernahmenyesal}",
+    "xss": "CYC{ezetkanbrokwkwk}",
+    "ci": "CYC{ph3lixxxjanganlupamewing}",
+    "lfi": "CYC{wowngemrihbank}",
+    "csrf": "CYC{anjaybowlehjuga}",  
+    "secret": "153.92.5.137"
+};
+
+  // Track solved challenges
+  const solvedChallenges = {
+    "sql": false,
+    "xss": false,
+    "ci": false,
+    "lfi": false,
+    "csrf": false,
+    "secret": false
+  };
+
   function toggleSolution(id) {
     const solution = document.getElementById(id);
     if (solution.style.display === "block") {
@@ -318,6 +406,46 @@
     } else {
       solution.style.display = "block";
       event.target.textContent = "Hide Solution";
+    }
+  }
+
+  function showNotification(message, isSuccess) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.className = isSuccess ? 'notification success' : 'notification error';
+    notification.style.display = 'block';
+    notification.style.opacity = '1';
+
+    setTimeout(() => {
+      notification.style.opacity = '0';
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 300);
+    }, 3000);
+  }
+
+  function validateFlag(challengeId, button) {
+    const challengeCard = document.getElementById(`${challengeId}-challenge`);
+    const input = button.previousElementSibling;
+    const userFlag = input.value.trim();
+
+    if (!userFlag) {
+      showNotification('Please enter a flag!', false);
+      return;
+    }
+
+    if (userFlag === correctFlags[challengeId]) {
+      solvedChallenges[challengeId] = true;
+      challengeCard.classList.add('solved');
+      button.style.backgroundColor = '#27ae60';
+      button.textContent = 'Solved!';
+      showNotification('✅ Correct flag! Challenge solved!', true);
+    } else {
+      button.style.backgroundColor = '#e74c3c';
+      setTimeout(() => {
+        button.style.backgroundColor = '#27ae60';
+      }, 1000);
+      showNotification('❌ Incorrect flag! Try again!', false);
     }
   }
 
@@ -343,7 +471,7 @@
     ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
     ctx.fillRect(0, 0, width, height);
 
-    ctx.fillStyle = '#0F0';
+    ctx.fillStyle = '#0F0'; // green text
     ctx.font = fontSize + 'px monospace';
 
     for (let i = 0; i < drops.length; i++) {
