@@ -1,6 +1,6 @@
 <?php
 $page = $_GET['page'] ?? 'home';
-$flag = "CYSCOM{wowngemrihbank}";
+$flag = "CYC{wowngemrihbank}";
 
 if (preg_match('/flag/i', $page)) {
     echo "Nope bro, ga bisa akses langsung ke flag.";
